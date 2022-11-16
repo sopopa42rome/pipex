@@ -6,7 +6,7 @@
 #    By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 18:33:40 by sopopa            #+#    #+#              #
-#    Updated: 2022/11/14 05:06:43 by sopopa           ###   ########.fr        #
+#    Updated: 2022/11/16 12:34:03 by sopopa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBFT = ./libft
 LIBFT_LIB = libft.a
 
 SRCS = pipex_utils.c \
+	pipex.c
 
 
 OBJS	= $(SRCS:.c=.o)

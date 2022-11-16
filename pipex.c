@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:49:28 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/14 05:06:42 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/16 12:36:11 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    child_process(char **argv, char **envp, int *fd)
 {
 	int file_input;
 	
-	file_input = open_file(argv[1], O_READ);
+	execute_command(argv[1], envp);
 
 }
 
@@ -26,7 +26,7 @@ int main (int argc, char **argv, char **envp)
 	int fd[2];
 	int process_id;
 
-	if (argc == 5)
+	if (argc == 2)
 	{
 
 		if (pipe(fd) == -1)

@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:51:17 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/14 05:06:43 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/16 14:51:38 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int		openfile(char *argv, int mode)
 	if (file == -1)
 		error();
 	if (mode == 0)
-		file = open(argv, O_WRONLY | O_CREAT | O_APPEND | __O_CLOEXEC, 0777);
+		file = open(argv, O_WRONLY | O_CREAT | O_APPEND | O_CLOEXEC, 0777);
 	else if (mode == 1)
-		file = open(argv, O_WRONLY | O_CREAT | O_TRUNC | __O_CLOEXEC, 0777);
+		file = open(argv, O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0777);
 	else if (mode == 2)
-		file = open(argv, O_RDONLY | __O_CLOEXEC, 0777);
+		file = open(argv, O_RDONLY | O_CLOEXEC, 0777);
 	return (file);
 }
 
@@ -41,37 +41,38 @@ void	execute_command(char *argv, char **envp)
 	char **cmd;
 
 	cmd = ft_split(argv, ' ');
-	if (execve(find_path(cmd[0], envp), cmd, envp) == -1);
+	if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		error();
 }
 
 
-char	*find_path(char *cmd, char **envp)
+char	*find_path(char *argv_cmd, char **envp)
 {	
 	int i;
-	char	**splitted_path;
-	char	*slash;
-	char	*path_cmd;
-
+	char	**split_of_envpath;
+	char	*temp;
+	char	*path_with_cmd;
 
 	i = 0;
 	while (ft_strnstr(envp[i], "PATH", 4) != 0)
 		i++;
-	splitted_path = ft_split(envp[i] + 5, ':');
+	split_of_envpath = ft_split(envp[i] + 5, ':');
 	i = 0;
-	while (splitted_path[i])
+	while (split_of_envpath[i] != NULL)
 	{
-		slash = ft_strjoin(splitted_path[i], "/");
-		path_cmd = ft_strjoin(slash, cmd);
-		free(slash);
-		if (access(path_cmd, F_OK) == 0);
+		temp = ft_strjoin(split_of_envpath[i], "/");
+		free(split_of_envpath[i]);
+		path_with_cmd = ft_strjoin(temp, argv_cmd);
+		free(temp);	
+		if (access(path_with_cmd, F_OK) == 0)
 		{
-			printf("String: %s",path_cmd);
-			return (path_cmd);
+			printf("%s", path_with_cmd);
+			return (path_with_cmd);
 		}
-		free(path_cmd);
+		free(path_with_cmd);
 		i++;	
 	}
+	return (0);
 }
 
 
@@ -79,23 +80,14 @@ char	*find_path(char *cmd, char **envp)
 
 
 
-
-
-int main (int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
-	if (argc == 2)
-	{	
-		//char **cmd;
-		char  *str;
-
-		//cmd = ft_split(argv[1], ' ');
-		str = find_path(argv[1], envp);
-		printf("%s", str);
-
-	}
+	char *str;
+	
+	
+	str = find_path(argv[1], envp);
 	
 }
-
 
 
 

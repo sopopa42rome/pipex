@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:29:30 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/13 16:35:26 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/16 12:42:37 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #include <stdio.h>
 #include <sys/wait.h>
 #include "./libft/libft.h"
+#include <sys/types.h>
+#include <sys/stat.h>
 
 
 // Macros
@@ -36,7 +38,7 @@ void	error(void);
 int		openfile(char *argv, int mode);
 void    child_process(char **argv, char **envp, int fd);
 char	*find_path(char *cmd, char **envp);
-
+void	execute_command(char *argv, char **envp);
 
 
 
