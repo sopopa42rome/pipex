@@ -6,13 +6,13 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:51:17 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/16 16:54:40 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/17 19:08:33 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// Funzione che stampa a video un messaggio di errore standard con ritorno a 1
+// Function that prints a standard message on the screen and it returns 1.
 void	error(void)
 {
 	perror("\x1B[31mError\n");
@@ -35,17 +35,18 @@ int	openfile(char *argv, int mode)
 		file = open(argv, O_RDONLY | O_CLOEXEC, 0777);
 	return (file);
 }
-
+//Function that split the command and it passes through find_path to parse.
 void	execute_command(char *argv, char **envp)
 {
 	char	**cmd;
-	int		i;
 
 	cmd = ft_split(argv, ' ');
 	if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		error();
 }
 
+/*Function that parse the PATH from envp(environment of bash) and it returns 
+  a string if the command exists in that path with the function access().*/
 char	*find_path(char *cmd, char **envp)
 {	
 	int		i;
@@ -71,9 +72,4 @@ char	*find_path(char *cmd, char **envp)
 	}
 	free(split_of_path);
 	return (0);
-}
-
-int main (int argc, char **argv, char **envp)
-{
-	execute_command(argv[1], envp);
 }

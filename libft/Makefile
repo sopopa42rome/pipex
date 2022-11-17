@@ -6,7 +6,7 @@
 #    By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/19 17:05:02 by sopopa            #+#    #+#              #
-#    Updated: 2022/03/08 20:05:16 by sopopa           ###   ########.fr        #
+#    Updated: 2022/11/17 19:11:49 by sopopa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,14 +62,14 @@ BONUS = ft_lstnew.c \
 OBJS_BONUS = $(BONUS:.c=.o)
 
 $(NAME):
-	$(CC) $(FLAGS) $(SRCS)
-	ar rcs libft.a $(OBJS)
+		@$(CC) $(FLAGS) $(SRCS)
+		@ar rcs libft.a $(OBJS)
 all: $(NAME)
 clean:
-	rm -f $(OBJS) $(OBJS_BONUS)
+	 @rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean:		clean
-	rm -f $(NAME)
+	 @rm -f $(NAME)
 re: fclean all
 bonus:
 	$(CC) $(FLAGS) $(BONUS)
