@@ -6,7 +6,7 @@
 #    By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 21:23:18 by sopopa            #+#    #+#              #
-#    Updated: 2022/11/07 14:33:54 by sopopa           ###   ########.fr        #
+#    Updated: 2022/11/18 22:55:58 by sopopa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,22 +31,22 @@ FLAGS	= -Wall -Wextra -Werror
 INCS	= ./
 
 .c.o :
-	${CC} $(FLAGS) -c $< -o $(<:.c=.o) -I $(INCS)
+	 @${CC} $(FLAGS) -c $< -o $(<:.c=.o) -I $(INCS)
 
 
 $(NAME): ${OBJS}
-	make all -C $(LIBFT)/
-	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
-	$(LIBC) $(NAME) $(OBJS)
+	 @make re -C $(LIBFT)/
+	 @cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+	 @$(LIBC) $(NAME) $(OBJS)
 
 all: $(NAME)
     
 fclean: clean
-	$(RM) $(NAME)
-	make clean -C $(LIBFT)
+	 @$(RM) $(NAME)
+	 @make clean -C $(LIBFT)
 
 clean:
-	$(RM) $(OBJS)
+	 @$(RM) $(OBJS)
 	
 re: fclean all
 
