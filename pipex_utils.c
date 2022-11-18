@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:51:17 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/17 19:08:33 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/18 22:28:54 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,29 @@ int	openfile(char *argv, int mode)
 		file = open(argv, O_RDONLY | O_CLOEXEC, 0777);
 	return (file);
 }
+
 //Function that split the command and it passes through find_path to parse.
-void	execute_command(char *argv, char **envp)
+void	execute_command(char *argv, char **envp, int process)
 {
 	char	**cmd;
 
 	cmd = ft_split(argv, ' ');
-	if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
-		error();
+	if (process == 0)
+	{
+		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
+		{
+			perror("Something's wrong with the first command!\n\x1B[31m");
+			exit(2);
+		}
+	}
+	if (process == 1)
+	{
+		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
+		{
+			perror("Something's wrong with the second command!\n\x1B[31m");
+			exit(2);
+		}
+	}
 }
 
 /*Function that parse the PATH from envp(environment of bash) and it returns 
