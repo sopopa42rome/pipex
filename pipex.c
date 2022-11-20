@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:49:28 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/18 22:33:00 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:00:18 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 // fd[0] is for reading
 // fd[1] is for writing
 
+/* 
+   The function child opens the file with the right 
+   flags and use the first cmd 
+   received from the input on the file just opened,
+   the results will be stored on the file descriptor 
+   pipe fd[1] that is for writing.
+*/
 void	child_process(char **argv, char **envp, int *fd)
 {
 	int	file_input;
@@ -29,10 +36,16 @@ void	child_process(char **argv, char **envp, int *fd)
 	execute_command(argv[2], envp, 0);
 }
 
+/* 
+   The parent opens the file with the right flags and 
+   takes the second cmd and it uses on the 
+   file descriptor pipe fd[0] that is for reading, 
+   the output result will be stored on the output file
+*/
 void	parent_process(char **argv, char **envp, int *fd)
 {
-	int	file_output;
-	char **str;
+	int		file_output;
+	char	**str;
 
 	str = ft_split(argv[3], ' ');
 	ft_printf("\033[0;37mThe father are processing...\n");
