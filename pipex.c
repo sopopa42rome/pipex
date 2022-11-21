@@ -57,6 +57,7 @@ void	parent_process(char **argv, char **envp, int *fd)
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	dup2(file_output, STDOUT_FILENO);
+	free(str);
 	execute_command(argv[3], envp, 1);
 }
 

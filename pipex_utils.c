@@ -81,7 +81,10 @@ char	*find_path(char *cmd, char **envp)
 		path_with_cmd = ft_strjoin(temp, cmd);
 		free(temp);
 		if (access(path_with_cmd, F_OK) == 0)
+		{
+			free(split_of_path);
 			return (path_with_cmd);
+		}
 		free(path_with_cmd);
 		i++;
 	}

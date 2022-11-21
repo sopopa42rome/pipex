@@ -38,8 +38,10 @@ $(NAME): ${OBJS}
 				@make re -C $(LIBFT)/
 				@make re -C $(PRINTF)/
 				@cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+				@cp $(PRINTF)/$(PRINTF_LIB) $(NAME)
 				@$(LIBC) $(NAME) $(OBJS)
-				@$(CC) -o $(NAME) $(PRINTF)/$(PRINTF_LIB) $(NAME)
+				@gcc $(NAME)
+				@mv a.out $(NAME)
 				@echo "\033[32mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
 all: $(NAME)

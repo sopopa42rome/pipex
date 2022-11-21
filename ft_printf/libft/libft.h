@@ -49,7 +49,7 @@ int		ft_atoi(const char *str);
 void	*ft_calloc(size_t num_elements, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *string, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
