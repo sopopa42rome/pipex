@@ -37,16 +37,14 @@ int	openfile(char *argv, int mode)
 }
 
 //Function that split the command and it passes through find_path to parse.
-void	execute_command(char *argv, char **envp, int process)
+void	execute_command(char **cmd, char **envp, int process)
 {
-	char	**cmd;
-
-	cmd = ft_split(argv, ' ');
 	if (process == 0)
 	{
 		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		{
-			perror("Something's wrong with the first command!\n\x1B[31m");
+			perror("Something's wrong with the first command!\n\x1B[31m");	
+			free(cmd);
 			exit(2);
 		}
 	}
@@ -55,6 +53,8 @@ void	execute_command(char *argv, char **envp, int process)
 		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		{
 			perror("Something's wrong with the second command!\n\x1B[31m");
+			free(cmd[0]);
+			free(cmd);
 			exit(2);
 		}
 	}

@@ -37,6 +37,6 @@ void	error(void);
 int		openfile(char *argv, int mode);
 void	child_process(char **argv, char **envp, int *fd);
 char	*find_path(char *cmd, char **envp);
-void	execute_command(char *argv, char **envp, int process);
+void	execute_command(char **cmd, char **envp, int process);
 
 #endif

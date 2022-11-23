@@ -25,6 +25,7 @@
 void	child_process(char **argv, char **envp, int *fd)
 {
 	int	file_input;
+	char **cmd;
 
 	ft_printf("The child are processing...\n");
 	file_input = openfile(argv[1], O_READ);
@@ -33,7 +34,9 @@ void	child_process(char **argv, char **envp, int *fd)
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(file_input, STDIN_FILENO);
-	execute_command(argv[2], envp, 0);
+	cmd = ft_split(argv[2], ' ');
+	execute_command(cmd, envp, 1);
+	free(cmd);
 }
 
 /* 
@@ -45,9 +48,10 @@ void	child_process(char **argv, char **envp, int *fd)
 void	parent_process(char **argv, char **envp, int *fd)
 {
 	int		file_output;
+	char **cmd;
 	char	**str;
 
-	str = ft_split(argv[3], ' ');
+ 	str = ft_split(argv[3], ' ');
 	ft_printf("\033[0;37mThe father are processing...\n");
 	file_output = openfile(argv[4], O_WRITE_TRUNC);
 	if (file_output == -1)
@@ -57,8 +61,12 @@ void	parent_process(char **argv, char **envp, int *fd)
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
 	dup2(file_output, STDOUT_FILENO);
+	free(str[0]);
 	free(str);
-	execute_command(argv[3], envp, 1);
+	cmd = ft_split(argv[3], ' ');
+	execute_command(cmd, envp, 1);
+	free(cmd);
+
 }
 
 int	main(int argc, char **argv, char **envp)
