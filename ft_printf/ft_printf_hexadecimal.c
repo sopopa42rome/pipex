@@ -6,12 +6,11 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 20:45:41 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/07 14:24:55 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:19:45 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int	ft_print_hex(unsigned long long ptr, const char format)
 {

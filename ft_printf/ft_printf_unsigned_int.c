@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_unsigned_int.c                            :+:      :+:    :+:   */
+/*   ft_printf_unsigned_int.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 22:48:55 by sopopa            #+#    #+#             */
-/*   Updated: 2022/10/24 22:48:55 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:19:43 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int	ft_print_unsigned(unsigned int num)
 {

@@ -6,7 +6,7 @@
 #    By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/10 18:33:40 by sopopa            #+#    #+#              #
-#    Updated: 2022/11/18 19:20:36 by sopopa           ###   ########.fr        #
+#    Updated: 2022/11/24 16:19:54 by sopopa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,13 @@ INCS	= ./
 
 $(NAME): ${OBJS}
 				@echo "\033[33mCompiling libft and pipex..."
-				@make re -C $(LIBFT)/
-				@make re -C $(PRINTF)/
-				@cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
-				@cp $(PRINTF)/$(PRINTF_LIB) $(NAME)
-				@$(LIBC) $(NAME) $(OBJS)
-				@gcc $(NAME)
-				@mv a.out $(NAME)
+				make re -C $(LIBFT)/
+				make re -C $(PRINTF)/
+				cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+				cp $(PRINTF)/$(PRINTF_LIB) $(NAME)
+				$(LIBC) $(NAME) $(OBJS)
+				gcc $(NAME)
+				mv a.out $(NAME)
 				@echo "\033[32mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
 
 all: $(NAME)

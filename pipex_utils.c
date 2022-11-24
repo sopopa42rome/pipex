@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:51:17 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/18 22:56:01 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:30:26 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ void	execute_command(char **cmd, char **envp, int process)
 	{
 		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		{
-			perror("Something's wrong with the first command!\n\x1B[31m");	
+			perror("Something's wrong with the first command!\n\x1B[31m");
+			free(cmd[0]);
 			free(cmd);
-			exit(2);
+			exit(EXIT_FAILURE);
 		}
 	}
 	if (process == 1)
@@ -55,7 +56,7 @@ void	execute_command(char **cmd, char **envp, int process)
 			perror("Something's wrong with the second command!\n\x1B[31m");
 			free(cmd[0]);
 			free(cmd);
-			exit(2);
+			exit(EXIT_FAILURE);
 		}
 	}
 }

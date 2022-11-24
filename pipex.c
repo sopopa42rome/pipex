@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:49:28 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/20 17:00:18 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:28:37 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	child_process(char **argv, char **envp, int *fd)
 	dup2(fd[1], STDOUT_FILENO);
 	dup2(file_input, STDIN_FILENO);
 	cmd = ft_split(argv[2], ' ');
-	execute_command(cmd, envp, 1);
-	free(cmd);
+	execute_command(cmd, envp, 0);
 }
 
 /* 
@@ -65,7 +64,6 @@ void	parent_process(char **argv, char **envp, int *fd)
 	free(str);
 	cmd = ft_split(argv[3], ' ');
 	execute_command(cmd, envp, 1);
-	free(cmd);
 
 }
 

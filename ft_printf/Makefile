@@ -6,13 +6,13 @@
 #    By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/27 21:23:18 by sopopa            #+#    #+#              #
-#    Updated: 2022/11/18 22:55:58 by sopopa           ###   ########.fr        #
+#    Updated: 2022/11/24 16:22:07 by sopopa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-LIBFT = ./libft
+LIBFT = ../libft
 
 LIBFT_LIB = libft.a
 

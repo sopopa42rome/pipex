@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointaddress.c                            :+:      :+:    :+:   */
+/*   ft_printf_pointaddress.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 02:35:43 by sopopa            #+#    #+#             */
-/*   Updated: 2022/10/23 10:35:27 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/24 16:19:44 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 int	ft_print_pointaddress(unsigned long long ptr)
 {
