@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:49:28 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/24 16:28:37 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/20 17:00:18 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	main(int argc, char **argv, char **envp)
 			waitpid(process_id2, NULL, 0);
 			parent_process(argv, envp, fd);
 		}
-		wait(NULL);
+		waitpid();
 		write(1,"something for id\n", 17);
 	}
 	ft_putstr_fd("\033[31mError: Bad arguments\n\e[0m", 2);
