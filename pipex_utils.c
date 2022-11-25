@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:51:17 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/24 16:30:26 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:59:50 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ void	execute_command(char **cmd, char **envp, int process)
 	{
 		if (execve(find_path(cmd[0], envp), cmd, envp) == -1)
 		{
-<<<<<<< HEAD
 			perror("Something's wrong with the first command!\n\x1B[31m");
-=======
-			perror("Something's wrong with the first command!\n\x1B[31m");	
->>>>>>> 53b1c03 (DA corregere)
 			free(cmd[0]);
 			free(cmd);
 			exit(EXIT_FAILURE);

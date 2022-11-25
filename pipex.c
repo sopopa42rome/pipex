@@ -6,7 +6,7 @@
 /*   By: sopopa <sopopa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 21:49:28 by sopopa            #+#    #+#             */
-/*   Updated: 2022/11/20 17:00:18 by sopopa           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:58:49 by sopopa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,31 +71,18 @@ int	main(int argc, char **argv, char **envp)
 {
 	int	fd[2];
 	int	process_id;
-	int process_id2;
 
 	if (argc == 5)
 	{	
-		printf("Original parent = %d\n", getppid());
 		if (pipe(fd) == -1)
 			error();
 		process_id = fork();
 		if (process_id == -1)
 			error();
-		printf("child id from the original parent = %d\n", getpid());
-		if (process_id > 0)
-		{
-			process_id2 = fork();
-			printf("second fork child has id = %d\n", getpid());
-			printf("second fork parent has id = %d\n", getppid());
-			if (process_id == 0)
-			{
-				child_process(argv, envp, fd);
-			}
-			waitpid(process_id2, NULL, 0);
-			parent_process(argv, envp, fd);
-		}
-		waitpid();
-		write(1,"something for id\n", 17);
+		if (process_id == 0)
+			child_process(argv, envp, fd);
+		waitpid(process_id, NULL, 0);
+		parent_process(argv, envp, fd);
 	}
 	ft_putstr_fd("\033[31mError: Bad arguments\n\e[0m", 2);
 	ft_putstr_fd("Ex: ./pipex <input_file> <cmd1> <cmd2> <output_file>\n", 1);
